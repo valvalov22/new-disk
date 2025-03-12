@@ -107,6 +107,7 @@ onBeforeUnmount(() => {
 
   @media (max-width: $md2) {
     width: 90%;
+    padding: 20px;
   }
 }
 
@@ -118,7 +119,7 @@ onBeforeUnmount(() => {
   position: relative;
 
   @media (max-width: $md4) {
-    padding: 0;
+    padding: 10px;
   }
 }
 

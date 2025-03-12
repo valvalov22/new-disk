@@ -54,10 +54,13 @@ const handleSubmit = async () => {
   } catch (error: unknown) {
     if (axios.isAxiosError(error)) {
       errorMessage.value = error.response?.data?.message || 'Ошибка сервера'
+      console.log('Ошибка')
     } else if (error instanceof Error) {
       errorMessage.value = error.message
+      console.log('Ошибка')
     } else {
       errorMessage.value = 'Неизвестная ошибка'
+      console.log('Ошибка')
     }
   } finally {
     isLoading.value = false
@@ -73,6 +76,7 @@ const handleSubmit = async () => {
       placeholder="Введите значение"
       type="text"
       aria-label="Введите значение"
+      @input="errorMessage = ''"
     />
     <VInput
       v-model="password"
@@ -81,6 +85,7 @@ const handleSubmit = async () => {
       placeholder="Введите пароль"
       type="password"
       aria-label="Введите пароль"
+      @input="errorMessage = ''"
     />
 
     <VInput
@@ -91,24 +96,29 @@ const handleSubmit = async () => {
       type="password"
       aria-label="Введите пароль"
       showToggle
+      @input="errorMessage = ''"
     />
 
     <div class="auth-form__footer">
       <p class="switch-mode text-small">
         {{ mode === 'login' ? 'У вас нет аккаунта?' : 'Уже есть аккаунт?' }}
-        <VLink class="text-small-bold" @click="emit('switchMode')">{{
-          mode === 'login' ? 'Зарегистрируйтесь' : 'Войти'
-        }}</VLink>
+        <VLink class="text-small-bold" @click="emit('switchMode')">
+          {{ mode === 'login' ? 'Зарегистрируйтесь' : 'Войти' }}</VLink
+        >
       </p>
       <VBtn type="submit" :disabled="isLoading">{{
         isLoading ? 'Загрузка...' : mode === 'login' ? 'Войти' : 'Зарегистрироваться'
       }}</VBtn>
     </div>
 
-    <p v-if="errorMessage" role="alert" aria-live="assertive" class="error">{{ errorMessage }}</p>
-    <p v-if="successMessage" role="alert" aria-live="polite" class="success">
-      {{ successMessage }}
-    </p>
+    <Transition name="fade" mode="out-in">
+      <p v-if="errorMessage" role="alert" aria-live="assertive" class="error">{{ errorMessage }}</p>
+    </Transition>
+    <Transition name="fade" mode="out-in">
+      <p v-if="successMessage" role="alert" aria-live="polite" class="success">
+        {{ successMessage }}
+      </p>
+    </Transition>
   </form>
 </template>
 
@@ -130,7 +140,7 @@ const handleSubmit = async () => {
     align-items: center;
     margin-top: 16px;
 
-    @media (max-width: $md4) {
+    @media (max-width: $md3) {
       flex-direction: column-reverse;
       gap: 8px;
 
@@ -157,5 +167,10 @@ const handleSubmit = async () => {
 .success {
   background: rgba(97, 255, 116, 0.1);
   color: var(--green-middle);
+}
+
+.switch-mode {
+  color: var(--gray);
+  text-align: center;
 }
 </style>

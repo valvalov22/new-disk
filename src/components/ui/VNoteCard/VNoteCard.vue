@@ -90,6 +90,11 @@ const handleDelete = (id: number) => {
   line-height: 1.4;
   padding: 20px 28px;
   margin-bottom: 20px;
+
+  p {
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
 }
 
 .delete-button {

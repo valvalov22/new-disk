@@ -16,30 +16,18 @@ export const useAuthStore = defineStore('auth', () => {
   }
 
   const login = async (email: string, password: string) => {
-    try {
-      const { accessToken } = await authApi.login(email, password)
-      setToken(accessToken)
-      await fetchUser()
-    } catch (error) {
-      console.error('Ошибка входа:', error)
-    }
+    const { accessToken } = await authApi.login(email, password)
+    setToken(accessToken)
+    await fetchUser()
   }
 
   const fetchUser = async () => {
     if (!token.value) return
-    try {
-      user.value = await authApi.fetchUser()
-    } catch {
-      logout()
-    }
+    user.value = await authApi.fetchUser()
   }
 
   const logout = async () => {
-    try {
-      await authApi.logout()
-    } catch (error) {
-      console.error('Ошибка выхода:', error)
-    }
+    await authApi.logout()
     user.value = null
     setToken(null)
   }

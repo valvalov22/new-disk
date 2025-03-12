@@ -40,9 +40,7 @@ const focusInput = () => {
 
 <template>
   <div class="input" :class="{ 'app-input--error': errorMessage }">
-    <label v-if="label" class="input__label" @click="focusInput">
-      {{ label }}
-    </label>
+    <label v-if="label" class="input__label" @click="focusInput"> {{ label }} * </label>
     <input
       ref="inputRef"
       v-model="inputValue"
