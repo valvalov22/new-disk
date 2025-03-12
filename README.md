@@ -25,7 +25,7 @@ https://new-disk.netlify.app/
 ## Клонирование репозитория
 
 ```bash
-git clone https://github.com/valvalov22/brave-test-task.git
+git clone https://github.com/valvalov22/new-disk.git
 # Клонирование репозитория
 npm install
 # Установка зависимостей
