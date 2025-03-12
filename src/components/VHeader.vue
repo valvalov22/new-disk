@@ -71,6 +71,10 @@ const truncatedEmail = computed(() => {
   justify-content: space-between;
   align-items: center;
 
+  @media (max-width: $md4) {
+    padding: 30px 10px 10px 10px;
+  }
+
   img {
     width: 220px;
     height: 50px;
