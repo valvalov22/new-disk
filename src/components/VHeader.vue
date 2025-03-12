@@ -59,7 +59,7 @@ const modalTitle = computed(() =>
 
 <style scoped lang="scss">
 .header {
-  margin-top: 43px;
+  padding-top: 43px;
   width: 100%;
   display: flex;
   justify-content: space-between;

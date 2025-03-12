@@ -66,7 +66,7 @@ defineProps<{
     @media (max-width: 768px) {
       position: absolute;
       bottom: 0;
-      height: 527px;
+      height: auto;
       left: 50%;
       transform: translateX(-50%);
     }
