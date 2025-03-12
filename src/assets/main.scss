@@ -1,0 +1,36 @@
+@use './base.scss';
+
+@use './styles/fonts.scss';
+@use './styles/variables';
+@use './styles/null';
+@use './styles/animation';
+@use './styles/breakpoint';
+@use './styles/typography';
+
+#app {
+  max-width: 80%;
+  margin: 0 auto;
+  font-weight: normal;
+
+  @media (max-width: 768px) {
+    max-width: 95%;
+  }
+}
+
+body {
+  background-color: var(--dark);
+}
+
+a,
+.green {
+  text-decoration: none;
+  color: hsla(160, 100%, 37%, 1);
+  transition: 0.4s;
+  padding: 3px;
+}
+
+@media (hover: hover) {
+  a:hover {
+    background-color: hsla(160, 100%, 37%, 0.2);
+  }
+}
