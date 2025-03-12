@@ -61,7 +61,7 @@ defineProps<{
   z-index: 10;
 
   @media (max-width: $md1) {
-    top: 12%;
+    top: 15%;
     left: 50%;
     transform: translateX(-50%);
   }
