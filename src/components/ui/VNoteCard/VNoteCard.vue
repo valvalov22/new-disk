@@ -32,10 +32,11 @@ const handleDelete = (id: number) => {
 </template>
 
 <style lang="scss" scoped>
+@use '@/assets/styles/breakpoint.scss' as *;
 .note {
   max-width: 507px;
 
-  @media (max-width: 768px) {
+  @media (max-width: $md2) {
     max-width: 100%;
   }
 }

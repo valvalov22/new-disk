@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
-import VHeader from './components/VHeader.vue'
-import NotesView from './views/NotesView.vue'
+import VHeader from '@/components/VHeader.vue'
+import NotesView from '@/views/NotesView.vue'
 
 import { useAuthStore } from '@/store/auth'
-import MainView from './views/MainView.vue'
+import MainView from '@/views/MainView.vue'
 
 const authStore = useAuthStore()
 

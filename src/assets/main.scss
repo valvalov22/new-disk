@@ -4,7 +4,7 @@
 @use './styles/variables';
 @use './styles/null';
 @use './styles/animation';
-@use './styles/breakpoint';
+@use './styles/breakpoint' as *;
 @use './styles/typography';
 
 #app {
@@ -12,7 +12,7 @@
   margin: 0 auto;
   font-weight: normal;
 
-  @media (max-width: 768px) {
+  @media (max-width: $md2) {
     max-width: 95%;
   }
 }

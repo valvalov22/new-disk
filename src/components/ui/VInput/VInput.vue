@@ -52,8 +52,10 @@ const focusInput = () => {
       class="input__field"
     />
     <span v-if="showToggle" class="input__toggle" @click="isPasswordVisible = !isPasswordVisible">
-      <img v-if="!isPasswordVisible" src="/icons/eye.svg" alt="Show password" />
-      <img v-else src="/icons/eye-crossed.svg" alt="Hide password" />
+      <Transition name="fade" mode="out-in">
+        <img v-if="!isPasswordVisible" src="/icons/eye.svg" alt="Show password" />
+        <img v-else src="/icons/eye-crossed.svg" alt="Hide password" />
+      </Transition>
     </span>
     <p v-if="errorMessage" class="input__error">{{ errorMessage }}</p>
   </div>
@@ -92,12 +94,13 @@ const focusInput = () => {
 
   &__toggle {
     width: 18px;
-    height: 18px;
+    height: 16px;
     position: absolute;
     right: 20px;
     top: 66%;
     transform: translateY(-50%);
     cursor: pointer;
+    user-select: none;
   }
 
   &__counter {

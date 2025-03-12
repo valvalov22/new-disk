@@ -17,21 +17,53 @@ defineProps<{
         храни его в облаке
       </h3>
     </div>
-    <div class="content__img">
-      <img :src="imgSrc" alt="kanban board" role="img" aria-hidden="false" />
-    </div>
+  </div>
+  <div class="content__img">
+    <img :src="imgSrc" alt="kanban board" role="img" aria-hidden="false" />
   </div>
 </template>
 
 <style scoped lang="scss">
-.content {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  align-items: center;
-  column-gap: 225px;
+@use '@/assets/styles/breakpoint.scss' as *;
+.content__img {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  bottom: 0;
+  right: 10vw;
+  max-width: 922px;
+  width: 40%;
+  height: 85%;
 
-  @media (max-width: 1366px) {
-    column-gap: 50px;
+  @media (max-width: $md1) {
+    position: absolute;
+    bottom: 0;
+    right: 10vw;
+    height: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    align-self: center;
+    width: 65%;
+    max-width: 800px;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+.content {
+  position: absolute;
+  left: 10vw;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+
+  @media (max-width: $md1) {
+    top: 12%;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   &__text {
@@ -41,56 +73,18 @@ defineProps<{
     gap: 40px;
     max-width: 400px;
 
-    @media (max-width: 768px) {
+    @media (max-width: $md1) {
       margin-top: 0;
       width: 100%;
       text-align: center;
       max-width: none;
     }
 
-    @media (max-width: 500px) {
+    @media (max-width: $md3) {
       h1 {
         font-size: 60px;
       }
     }
-  }
-
-  &__img {
-    display: flex;
-    justify-content: center;
-    position: relative;
-    bottom: 0;
-    max-width: 922px;
-    height: 967px;
-
-    @media (max-width: 768px) {
-      position: absolute;
-      bottom: 0;
-      height: auto;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-  }
-}
-
-@media (max-width: 768px) {
-  .content {
-    grid-template-columns: 1fr;
-    text-align: center;
-    justify-content: center;
-    padding: 5% 10%;
-  }
-
-  .content__img {
-    align-self: center;
-    width: 80%;
-    max-width: 800px;
   }
 }
 </style>

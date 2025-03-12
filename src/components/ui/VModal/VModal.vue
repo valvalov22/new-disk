@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { defineProps, defineEmits, watch, ref, onMounted, onBeforeUnmount } from 'vue'
-import VBtn from '../VBtn/VBtn.vue'
+import VBtn from '@/components/ui/VBtn/VBtn.vue'
 
 interface Props {
   show: boolean
@@ -77,7 +77,8 @@ onBeforeUnmount(() => {
 </template>
 
 <style lang="scss" scoped>
-@use '../../../assets/styles/animation.scss';
+@use '@/assets/styles/animation.scss';
+@use '@/assets/styles/breakpoint.scss' as *;
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -104,7 +105,7 @@ onBeforeUnmount(() => {
   transform: scale(0.9);
   animation: scale-in 0.3s forwards;
 
-  @media (max-width: 768px) {
+  @media (max-width: $md2) {
     width: 90%;
   }
 }
@@ -116,7 +117,7 @@ onBeforeUnmount(() => {
   padding: 80px 40px 0 40px;
   position: relative;
 
-  @media (max-width: 488px) {
+  @media (max-width: $md4) {
     padding: 0;
   }
 }

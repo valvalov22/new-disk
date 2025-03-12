@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import VInput from '../VInput/VInput.vue'
-import VTextArea from '../VTextArea/VTextArea.vue'
-import VBtn from '../VBtn/VBtn.vue'
+import VInput from '@/components/ui/VInput/VInput.vue'
+import VTextArea from '@/components/ui/VTextArea/VTextArea.vue'
+import VBtn from '@/components/ui/VBtn/VBtn.vue'
 
 const emit = defineEmits(['submit', 'close'])
 
@@ -52,13 +52,14 @@ const handleSubmit = () => {
 </template>
 
 <style scoped lang="scss">
+@use '@/assets/styles/breakpoint.scss' as *;
 .note-form {
   display: flex;
   flex-direction: column;
   gap: 20px;
   padding: 40px;
 
-  @media (max-width: 488px) {
+  @media (max-width: $md4) {
     padding: 0;
   }
 

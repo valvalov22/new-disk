@@ -111,6 +111,7 @@ const deleteNote = async (id: number) => {
 </template>
 
 <style scoped lang="scss">
+@use '@/assets/styles/breakpoint.scss' as *;
 .notes-page {
   position: relative;
   padding: 20px;
@@ -130,12 +131,11 @@ const deleteNote = async (id: number) => {
 
 .notes-list {
   width: 100%;
-  // max-width: 600px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 40px;
 
-  @media (max-width: 768px) {
+  @media (max-width: $md2) {
     grid-template-columns: 1fr;
   }
 }

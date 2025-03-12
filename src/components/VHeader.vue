@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
-import { useAuthStore } from '../store/auth'
-import VModal from './ui/VModal/VModal.vue'
-import VBtn from './ui/VBtn/VBtn.vue'
-import VAuthForm from './ui/VAuthForm/VAuthForm.vue'
+import { useAuthStore } from '@/store/auth.ts'
+import VModal from '@/components/ui/VModal/VModal.vue'
+import VBtn from '@/components/ui/VBtn/VBtn.vue'
+import VAuthForm from '@/components/ui/VAuthForm/VAuthForm.vue'
 import { useClickOutside } from '@/directives/useClickOutside'
 
 const authStore = useAuthStore()
@@ -26,6 +26,11 @@ const logout = async () => {
 const modalTitle = computed(() =>
   authMode.value === 'login' ? 'Вход в ваш аккаунт' : 'Регистрация',
 )
+
+const truncatedEmail = computed(() => {
+  const email = authStore.user?.email || ''
+  return email.length > 20 ? email.slice(0, 20) + '...' : email
+})
 </script>
 
 <template>
@@ -34,7 +39,7 @@ const modalTitle = computed(() =>
 
     <template v-if="authStore.user">
       <div class="header__user">
-        <span class="user-email">{{ authStore.user.email }}</span>
+        <span class="user-email">{{ truncatedEmail }}</span>
         <img src="/images/user.png" alt="user" @click="toggleDropdown" />
 
         <Transition name="fade" mode="out-in">
@@ -58,6 +63,7 @@ const modalTitle = computed(() =>
 </template>
 
 <style scoped lang="scss">
+@use '@/assets/styles/breakpoint.scss' as *;
 .header {
   padding: 53px 10px 10px 10px;
   width: 100%;
@@ -69,7 +75,7 @@ const modalTitle = computed(() =>
     width: 220px;
     height: 50px;
 
-    @media (max-width: 768px) {
+    @media (max-width: $md2) {
       width: 154px;
       height: 36px;
     }
@@ -93,7 +99,7 @@ const modalTitle = computed(() =>
     font-weight: bold;
     display: block;
 
-    @media (max-width: 768px) {
+    @media (max-width: $md2) {
       display: none;
     }
   }

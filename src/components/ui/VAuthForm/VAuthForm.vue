@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { ref, defineProps, defineEmits } from 'vue'
-import { useAuthStore } from '../../../store/auth'
+import { useAuthStore } from '@/store/auth.ts'
 import axios from 'axios'
 import { API_URL } from '@/config'
-import VInput from '../VInput/VInput.vue'
-import VBtn from '../VBtn/VBtn.vue'
-import VLink from '../VLink/VLink.vue'
+import VInput from '@/components/ui/VInput/VInput.vue'
+import VBtn from '@/components/ui/VBtn/VBtn.vue'
+import VLink from '@/components/ui/VLink/VLink.vue'
 
 const props = defineProps<{ mode: 'login' | 'register' }>()
 const emit = defineEmits(['close', 'switchMode'])
@@ -113,13 +113,14 @@ const handleSubmit = async () => {
 </template>
 
 <style scoped lang="scss">
+@use '@/assets/styles/breakpoint.scss' as *;
 .auth-form {
   display: flex;
   flex-direction: column;
   gap: 24px;
   padding: 40px;
 
-  @media (max-width: 488px) {
+  @media (max-width: $md4) {
     padding: 20px;
   }
 
@@ -129,7 +130,7 @@ const handleSubmit = async () => {
     align-items: center;
     margin-top: 16px;
 
-    @media (max-width: 488px) {
+    @media (max-width: $md4) {
       flex-direction: column-reverse;
       gap: 8px;
 
